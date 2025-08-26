@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "author": "Laura Sofia",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -60.6, "left": 70, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -76.8,
+      "left": -81.56,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 32.2,
+      "left": 133.55,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -109.2,
+      "left": 138.2,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 174.3, "left": 15.1, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "bb1:tn.1", "black", [ "h38.4", "v9.7" ] ],
+    [ "esp:26", "bb1:8b.j", "red", [ "h-19.05", "v-115.2", "h153.3", "v182.4", "h105.9" ] ],
+    [ "r1:1", "bb1:8b.g", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:8t.c", "", [ "$bb" ] ],
+    [ "led1:A", "bb1:tn.6", "black", [ "v0" ] ],
+    [ "led1:C", "bb1:8t.a", "red", [ "v0" ] ],
+    [ "ultrasonic1:GND", "bb1:tn.10", "black", [ "h85.2", "v-307.1" ] ],
+    [ "ultrasonic1:ECHO", "esp:27", "gold", [ "v28.8", "h-202.4", "v-249.6" ] ],
+    [ "ultrasonic1:TRIG", "esp:25", "green", [ "v19.2", "h-211.6", "v-259.2" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "h-163.2", "v-144" ] ]
+  ],
+  "dependencies": {}
+}
